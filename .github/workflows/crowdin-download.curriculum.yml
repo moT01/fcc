@@ -24,16 +24,21 @@ jobs:
       #   with:
       #     token: ${{ secrets.CROWDIN_CAMPERBOT_PAT }}
 
-      - name: Generate Crowdin Config
-        uses: freecodecamp/crowdin-action@main
-        env:
-          PLUGIN: 'generate-config'
-          PROJECT_NAME: 'curriculum'
+      # - name: Generate Crowdin Config
+      #   uses: freecodecamp/crowdin-action@main
+      #   env:
+      #     PLUGIN: 'generate-config'
+      #     PROJECT_NAME: 'curriculum'
 
       - name: Print Paths
         uses: freecodecamp/crowdin-action@main
         env:
           PLUGIN: 'check-paths'
+
+      - name: Run Code
+        run: |
+          ls -la
+
 
       ##### Download Chinese #####
       # - name: Crowdin Download Chinese Translations
