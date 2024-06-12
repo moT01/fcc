@@ -1,5 +1,8 @@
 name: i18n - Download Curriculum
 
+on:
+  workflow_dispatch:
+
 # env:
 #   GITHUB_TOKEN: ${{ secrets.CROWDIN_CAMPERBOT_PAT }}
 #   CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_CAMPERBOT_SERVICE_TOKEN }}
