@@ -30,6 +30,11 @@ jobs:
           PLUGIN: 'generate-config'
           PROJECT_NAME: 'curriculum'
 
+      - name: Print Paths
+        uses: freecodecamp/crowdin-action@main
+        env:
+          PLUGIN: 'check-paths'
+
       ##### Download Chinese #####
       # - name: Crowdin Download Chinese Translations
       #   uses: crowdin/github-action@master
