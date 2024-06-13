@@ -400,25 +400,26 @@ jobs:
       # Todo: rewrite license files to odin project?
 
       # Create Commit
-      # - name: Commit Changes
-      #   uses: freecodecamp/crowdin-action@main
-      #   env:
-      #     PLUGIN: 'commit-changes'
-      #     GH_USERNAME: 'camperbot'
-      #     GH_EMAIL: ${{ secrets.ACTIONS_CAMPERBOT_EMAIL }}
-      #     GH_BRANCH: 'i18n-sync-curriculum'
-      #     GH_MESSAGE: 'chore(i18n,learn): processed translations'
-
-      # Create Commit
       - name: Commit Changes
-        uses: moT01/crowdin-action@feat/add-i18n-submodule-commit
+        uses: freecodecamp/crowdin-action@main
+        working-directory: i18n-curriculum
         env:
           PLUGIN: 'commit-changes'
           GH_USERNAME: 'camperbot'
           GH_EMAIL: ${{ secrets.ACTIONS_CAMPERBOT_EMAIL }}
           GH_BRANCH: 'i18n-sync-curriculum'
           GH_MESSAGE: 'chore(i18n,learn): processed translations'
-          SUBMODULE: 'i18n-curriculum'
+
+      # Create Commit
+      # - name: Commit Changes
+      #   uses: moT01/crowdin-action@feat/add-i18n-submodule-commit
+      #   env:
+      #     PLUGIN: 'commit-changes'
+      #     GH_USERNAME: 'camperbot'
+      #     GH_EMAIL: ${{ secrets.ACTIONS_CAMPERBOT_EMAIL }}
+      #     GH_BRANCH: 'i18n-sync-curriculum'
+      #     GH_MESSAGE: 'chore(i18n,learn): processed translations'
+      #     SUBMODULE: 'i18n-curriculum'
 
       # - name: Commit Changes
       #   run: |
@@ -442,6 +443,7 @@ jobs:
       # Create PR
       - name: Create PR
         uses: freecodecamp/crowdin-action@main
+        working-directory: i18n-curriculum
         env:
           PLUGIN: 'pull-request'
           GH_TOKEN: ${{ secrets.CROWDIN_CAMPERBOT_PAT }}
