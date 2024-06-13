@@ -381,6 +381,8 @@ jobs:
       - name: Debug 1
         run: |
           git status
+          cd i18n-curriculum
+          git status
 
       # Create Commit
       # - name: Commit Changes
@@ -406,11 +408,11 @@ jobs:
         run: |
           cd i18n-curriculum
           git config --global user.name ${{secrets.ACTIONS_CAMPERBOT_USERNAME}}
-          git config --global user.email camperbot@users.noreply.github.com
-          git config http.extraheader "Authorization: Bearer ${{ secrets.CROWDIN_CAMPERBOT_PAT }}"
+          git config --global user.email ${{secrets.ACTIONS_CAMPERBOT_EMAIL}}
           git checkout -b i18n-sync-curriculum
           git add .
           git diff-index --quiet HEAD || git commit -m "chore(i18n,learn): processed translations"
+          git log --oneline -1
           git push -u origin i18n-sync-curriculum
 
       - name: Debug 2
