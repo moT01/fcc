@@ -9,6 +9,7 @@ files:
   [
     {
       "source": "/curriculum/challenges/english/**/*.md",
+      "dest": "/curriculum/challenges/%language%/**/%original_file_name%",
       "translation": "/i18n-curriculum/curriculum/challenges/%language%/**/%original_file_name%",
       "ignore":
         [
@@ -21,10 +22,12 @@ files:
     },
     {
       "source": "/curriculum/challenges/english/00-certifications/**/*.yml",
+      "dest": "/curriculum/challenges/%language%/00-certifications/**/%original_file_name%",
       "translation": "/i18n-curriculum/curriculum/challenges/%language%/00-certifications/**/%original_file_name%",
     },
     {
       "source": "/curriculum/dictionaries/english/comments.json",
+      "dest": "/curriculum/dictionaries/%language%/%original_file_name%",
       "translation": "/i18n-curriculum/curriculum/dictionaries/%language%/%original_file_name%",
     },
   ]

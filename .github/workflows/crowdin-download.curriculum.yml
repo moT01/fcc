@@ -17,6 +17,7 @@ jobs:
         node-version: [20.x]
       fail-fast: true
 
+    # Todo: see if we can recurse submodules on checkout source files
     steps:
       - name: Checkout Source Files
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -414,6 +415,8 @@ jobs:
           git diff-index --quiet HEAD || git commit -m "chore(i18n,learn): processed translations"
           git log --oneline -1
           git push -u origin i18n-sync-curriculum
+        env:
+          GITHUB_TOKEN: ${{ secrets.CROWDIN_CAMPERBOT_PAT }}
 
       - name: Debug 2
         run: |
