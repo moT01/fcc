@@ -23,11 +23,21 @@ jobs:
         with:
           token: ${{ secrets.CROWDIN_CAMPERBOT_PAT }}
 
-      - name: Generate Crowdin Config
+      - name: Download i18n-curriculum Submodule Files
+        run: | 
+          git submodule update --init
+          cd i18n-curriculum
+
+      - name: Check Paths
         uses: freecodecamp/crowdin-action@main
         env:
-          PLUGIN: 'generate-config'
-          PROJECT_NAME: 'curriculum'
+          PLUGIN: 'check-paths'
+
+      # - name: Generate Crowdin Config
+      #   uses: freecodecamp/crowdin-action@main
+      #   env:
+      #     PLUGIN: 'generate-config'
+      #     PROJECT_NAME: 'curriculum'
 
       ##### Download Chinese #####
       # - name: Crowdin Download Chinese Translations
@@ -369,11 +379,6 @@ jobs:
 
       # - name: Overwrite Execute-Brain.md
       #   run: sudo tools/scripts/move-bf.sh
-
-      - name: Check Paths
-        uses: freecodecamp/crowdin-action@main
-        env:
-          PLUGIN: 'check-paths'
 
       - name: Debug 1
         run: |
