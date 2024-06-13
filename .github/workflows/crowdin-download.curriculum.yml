@@ -24,9 +24,7 @@ jobs:
           token: ${{ secrets.CROWDIN_CAMPERBOT_PAT }}
 
       - name: Download i18n-curriculum Submodule Files
-        run: | 
-          git submodule update --init
-          cd i18n-curriculum
+        run: git submodule update --init
 
       - name: Check Paths
         uses: freecodecamp/crowdin-action@main
@@ -385,14 +383,34 @@ jobs:
           git status
 
       # Create Commit
+      # - name: Commit Changes
+      #   uses: freecodecamp/crowdin-action@main
+      #   env:
+      #     PLUGIN: 'commit-changes'
+      #     GH_USERNAME: 'camperbot'
+      #     GH_EMAIL: ${{ secrets.ACTIONS_CAMPERBOT_EMAIL }}
+      #     GH_BRANCH: 'i18n-sync-curriculum'
+      #     GH_MESSAGE: 'chore(i18n,learn): processed translations'
+
+      # Create Commit
+      # - name: Commit Changes
+      #   uses: freecodecamp/crowdin-action@main
+      #   env:
+      #     PLUGIN: 'commit-changes'
+      #     GH_USERNAME: 'camperbot'
+      #     GH_EMAIL: ${{ secrets.ACTIONS_CAMPERBOT_EMAIL }}
+      #     GH_BRANCH: 'i18n-sync-curriculum'
+      #     GH_MESSAGE: 'chore(i18n,learn): processed translations'
+
       - name: Commit Changes
-        uses: freecodecamp/crowdin-action@main
-        env:
-          PLUGIN: 'commit-changes'
-          GH_USERNAME: 'camperbot'
-          GH_EMAIL: ${{ secrets.ACTIONS_CAMPERBOT_EMAIL }}
-          GH_BRANCH: 'i18n-sync-curriculum'
-          GH_MESSAGE: 'chore(i18n,learn): processed translations'
+        run: |
+          cd i18n-curriculum
+          git config --global user.name ${secrets.ACTIONS_CAMPERBOT_USERNAME}
+          git config --global user.email ${secrets.ACTIONS_CAMPERBOT_EMAIL}
+          git checkout -b i18n-sync-curriculum
+          git add .
+          git diff-index --quiet HEAD || git commit -m "chore(i18n,learn): processed translations"
+          git push -u origin i18n-sync-curriculum
 
       - name: Debug 2
         run: |
