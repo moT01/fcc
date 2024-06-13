@@ -387,6 +387,7 @@ jobs:
 
       - name: Move Downloads to i18n-curriculum Submodule
         run: |
+          sudo rm -rf i18n-curriculum/curriculum/challenges/espanol
           sudo mv curriculum/challenges/espanol/* i18n-curriculum/curriculum/challenges/espanol/
 
       - name: Debug 2
