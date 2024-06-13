@@ -418,6 +418,7 @@ jobs:
           GH_EMAIL: ${{ secrets.ACTIONS_CAMPERBOT_EMAIL }}
           GH_BRANCH: 'i18n-sync-curriculum'
           GH_MESSAGE: 'chore(i18n,learn): processed translations'
+          SUBMODULE: 'i18n-curriculum'
 
       # - name: Commit Changes
       #   run: |
