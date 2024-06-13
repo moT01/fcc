@@ -407,6 +407,7 @@ jobs:
           cd i18n-curriculum
           git config --global user.name ${{secrets.ACTIONS_CAMPERBOT_USERNAME}}
           git config --global user.email camperbot@users.noreply.github.com
+          git config http.extraheader "Authorization: Bearer ${{ secrets.CROWDIN_CAMPERBOT_PAT }}"
           git checkout -b i18n-sync-curriculum
           git add .
           git diff-index --quiet HEAD || git commit -m "chore(i18n,learn): processed translations"
