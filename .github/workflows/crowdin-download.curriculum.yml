@@ -406,7 +406,7 @@ jobs:
         run: |
           cd i18n-curriculum
           git config --global user.name ${{secrets.ACTIONS_CAMPERBOT_USERNAME}}
-          git config --global user.email ${{secrets.ACTIONS_CAMPERBOT_EMAIL}}
+          git config --global user.email camperbot@users.noreply.github.com
           git checkout -b i18n-sync-curriculum
           git add .
           git diff-index --quiet HEAD || git commit -m "chore(i18n,learn): processed translations"
