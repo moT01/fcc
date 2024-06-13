@@ -385,6 +385,16 @@ jobs:
           cd i18n-curriculum
           git status
 
+      - name: Move Downloads to i18n-curriculum Submodule
+        run: |
+          mv curriculum/challenges/espanol/* i18n-curriculum/curriculum/challenges/espanol/
+
+      - name: Debug 2
+        run: |
+          git status
+          cd i18n-curriculum
+          git status
+
       # Create Commit
       # - name: Commit Changes
       #   uses: freecodecamp/crowdin-action@main
@@ -418,7 +428,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.CROWDIN_CAMPERBOT_PAT }}
 
-      - name: Debug 2
+      - name: Debug 3
         run: |
           git status
           git log --oneline -1
