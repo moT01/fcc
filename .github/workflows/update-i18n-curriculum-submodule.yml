@@ -10,13 +10,18 @@ env:
 
 jobs:
   update-submodule:
+    name: i18n-curriculum
     runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        node-version: [20.x]
+      fail-fast: true
 
     steps:
-      - name: Checkout main repository
-        uses: actions/checkout@v2
+      - name: Checkout Source Files
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CROWDIN_CAMPERBOT_PAT }}
 
       - name: Update submodule
         run: |
