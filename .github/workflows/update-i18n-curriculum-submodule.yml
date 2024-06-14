@@ -22,25 +22,32 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
           token: ${{ secrets.CROWDIN_CAMPERBOT_PAT }}
+          submodules: true
+
+      - name: Ensure correct submodule path and initialization
+        run: |
+          git submodule sync
+          git submodule update --init --recursive
 
       - name: Debug
         run: |
           git status
           git diff
-          ls -la
+          cd i18n-curriculum
+          git status
+          git diff
 
       - name: Update submodule
         run: |
           git config --global user.email "${{ secrets.ACTIONS_CAMPERBOT_EMAIL }}"
           git config --global user.name "camperbot"
           git checkout -b chore/update-submodule
-          git submodule update --remote
+          git submodule update --remote i18n-curriculum
 
       - name: Debug 2
         run: |
           git status
           git diff
-          ls -la
 
       # - name: Create pull request
       #   uses: peter-evans/create-pull-request@v4
