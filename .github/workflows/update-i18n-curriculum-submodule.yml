@@ -1,6 +1,7 @@
 name: Update i18n-curriculum Submodule
 
 on:
+  workflow_dispatch:
   repository_dispatch:
     types: [submodule-update]
 
