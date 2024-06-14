@@ -23,6 +23,11 @@ jobs:
         with:
           token: ${{ secrets.CROWDIN_CAMPERBOT_PAT }}
 
+      - name: Debug
+        run: |
+          git status
+          git diff
+
       - name: Update submodule
         run: |
           git config --global user.email "${{ secrets.ACTIONS_CAMPERBOT_EMAIL }}"
