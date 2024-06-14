@@ -27,16 +27,20 @@ jobs:
         run: |
           git status
           git diff
+          ls -la
 
       - name: Update submodule
         run: |
           git config --global user.email "${{ secrets.ACTIONS_CAMPERBOT_EMAIL }}"
           git config --global user.name "camperbot"
-          git checkout -b chore/update-submodule-branch
+          git checkout -b chore/update-submodule
           git submodule update --remote
-          git add .
-          git commit -m "chore(curriculum): Update i18n-curriculum submodule to latest commit"
-          git push origin chore/update-submodule-branch
+
+      - name: Debug 2
+        run: |
+          git status
+          git diff
+          ls -la
 
       # - name: Create pull request
       #   uses: peter-evans/create-pull-request@v4
