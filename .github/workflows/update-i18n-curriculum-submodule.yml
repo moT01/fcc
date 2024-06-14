@@ -43,6 +43,9 @@ jobs:
           git config --global user.name "camperbot"
           git checkout -b chore/update-submodule
           git submodule update --remote i18n-curriculum
+          git add .
+          git commit -m "chore(curriculum): Update i18n-curriculum submodule"
+          git push -u origin chore/update-submodule
 
       - name: Debug 2
         run: |
